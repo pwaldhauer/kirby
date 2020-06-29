@@ -8,8 +8,8 @@ use Kirby\Toolkit\F;
 /**
  * The `Data` class provides readers and
  * writers for data. The class comes with
- * four handlers for `json`, `php`, `txt`,
- * `xml` and `yaml` encoded data, but can be
+ * handlers for `json`, `php`, `txt`, `xml`
+ * and `yaml` encoded data, but can be
  * extended and customized.
  *
  * The read and write methods automatically
@@ -75,11 +75,11 @@ class Data
     /**
      * Decodes data with the specified handler
      *
-     * @param string $data
+     * @param mixed $data
      * @param string $type
      * @return array
      */
-    public static function decode(string $data = null, string $type): array
+    public static function decode($data = null, string $type): array
     {
         return static::handler($type)->decode($data);
     }
