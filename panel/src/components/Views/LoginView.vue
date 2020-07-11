@@ -2,11 +2,7 @@
   <k-error-view v-if="issue">
     {{ issue.message }}
   </k-error-view>
-  <k-view
-    v-else-if="ready"
-    align="center"
-    class="k-login-view"
-  >
+  <k-view v-else-if="ready" align="center" class="k-login-view">
     <k-login-form />
   </k-view>
 </template>
@@ -30,11 +26,11 @@ export default {
       .dispatch("system/load")
       .then(system => {
         if (!system.isReady) {
-          this.$router.push("/installation");
+          this.$go("/installation");
         }
 
         if (system.user && system.user.id) {
-          this.$router.push("/");
+          this.$go("/");
         }
 
         this.ready = true;
