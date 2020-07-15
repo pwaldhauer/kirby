@@ -722,7 +722,7 @@ class AppTest extends TestCase
             ]
         ]);
 
-        $this->assertSame('AE', Str::$language['Ä']);
+        $this->assertSame('ss', Str::$language['ß']);
 
         // string option with dot notation
         new App([
@@ -730,11 +730,11 @@ class AppTest extends TestCase
                 'index' => '/dev/null'
             ],
             'options' => [
-                'slugs.language' => 'de'
+                'slugs.language' => 'fr'
             ]
         ]);
 
-        $this->assertSame('ss', Str::$language['ß']);
+        $this->assertSame('AE', Str::$language['Æ']);
 
         // array option
         new App([
@@ -743,11 +743,11 @@ class AppTest extends TestCase
             ],
             'options' => [
                 'slugs' => [
-                    'language' => 'de'
+                    'language' => 'tr'
                 ]
             ]
         ]);
 
-        $this->assertSame('ae', Str::$language['ä']);
+        $this->assertSame('S', Str::$language['Ş']);
     }
 }
