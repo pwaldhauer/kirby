@@ -839,7 +839,7 @@ class FieldTest extends TestCase
 
         $this->assertEquals([], $field->errors());
 
-        // passed (multiple condition)
+        // passed (multiple condition without any match)
         // 'baz' is required if 'foo' value is 'a' and 'bar' value is 'b'
         $field = new Field('baz', [
             'model' => $page,
@@ -850,6 +850,24 @@ class FieldTest extends TestCase
             ],
             'input' => [
                 'foo' => 'not-a',
+                'bar' => 'not-b',
+                'baz' => ''
+            ]
+        ]);
+
+        $this->assertEquals([], $field->errors());
+
+        // passed (multiple condition with single match)
+        // 'baz' is required if 'foo' value is 'a' and 'bar' value is 'b'
+        $field = new Field('baz', [
+            'model' => $page,
+            'required' => true,
+            'when' => [
+                'foo' => 'a',
+                'bar' => 'b'
+            ],
+            'input' => [
+                'foo' => 'a',
                 'bar' => 'not-b',
                 'baz' => ''
             ]
